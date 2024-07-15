@@ -8,9 +8,9 @@ const preprocessData = (data) => {
   const groupedData = {};
 
   // Group data by number of bedrooms
-  data.forEach((entry) => {
-    const bedrooms = entry['number of bedrooms'];
-    if (!groupedData[bedrooms]) {
+  data.forEach((entry) => { //iterates over each ele (entry) in the data array
+    const bedrooms = entry['number of bedrooms']; //from the current entry object, retrives the value of property: no.of bedrooms
+    if (!groupedData[bedrooms]) { // if not present == true
       groupedData[bedrooms] = [];
     }
     groupedData[bedrooms].push(entry);
