@@ -6,6 +6,7 @@ import BarChartWithBarProperties from './components/BarChartWithBarProperties';
 import BarChartWithAxisProperties from './components/BarChartWithAxisProperties';
 import BarChartExcel from './components/BarChartExcel';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import BarChartDB from './components/BarChartDB';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <select onChange={(e) => window.location.href = e.target.value}>
               <option value="">Select a chart</option>
               <option value="/BarChartExcel">BarChartExcel</option>
+              <option value="/BarChartDB">BarChartDB</option>
             </select>
           </nav>
         </header>
@@ -36,6 +38,7 @@ const App = () => {
             </div>
           } />
           <Route path="/BarChartExcel" element={<BarChartExcel />} />
+          <Route path="/BarChartDB" element={<BarChartDB />} />
         </Routes>
       </div>
     </Router>
