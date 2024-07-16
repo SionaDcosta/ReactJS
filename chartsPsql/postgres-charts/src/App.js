@@ -1,32 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './screens/Dashboard';
+import Sidebar from './components/SidebarComponent';
+import BarchartComponent from './components/BarchartComponent';
+import LinechartComponent from './components/LinechartComponent';
+import PiechartComponent from './components/PiechartComponent';
+import RadialbarChart from './components/RadialbarChart';
+import AreachartComponent from './components/AreachartComponent';
 
 const App = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await axios('http://localhost:5000/api/sales');
-        setData(result.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-    fetchData();
-  }, []);
-
   return (
-    <div>
-      <h1>Sales Data</h1>
-      <LineChart width={600} height={300} data={data}>
-        <Line type="monotone" dataKey="sales" stroke="#8884d8" />
-        <CartesianGrid stroke="#ccc" />
-        <XAxis dataKey="month" />
-        <YAxis />
-        <Tooltip />
-      </LineChart>
+    <div className='flex'>
+      <Sidebar />
+      <div className='flex-1'>
+        
+          <Routes>
+            <Route path='/' element={<Dashboard />} />
+            <Route path='/BarChart' element={<BarchartComponent />} />
+            <Route path='/LineChart' element={<LinechartComponent />} />
+            <Route path='/PieChart' element={<PiechartComponent />} />
+            {/* <Route path='/RadialBarChart' element={<RadialbarChart />} /> */}
+            <Route path='/AreaChart' element={<AreachartComponent />} />
+          </Routes>
+        
+      </div>
     </div>
   );
 };
